@@ -1,14 +1,25 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { restClient } from '@/api';
-import { user } from '@/store';
+import { realtimeClient } from '@/api';
+import { user, accessToken } from '@/store';
 import Login from '@/views/Login.vue';
 import CurrentUser from '@/views/CurrentUser.vue';
 
-
 const leftDrawerOpen = ref(false)
 const toggleLeftDrawer = ()=> leftDrawerOpen.value = !leftDrawerOpen.value
-onMounted(()=> setTimeout(()=> leftDrawerOpen.value = false, 250))
+
+onMounted(async ()=> {
+  setTimeout(()=> leftDrawerOpen.value = false, 50)
+
+  try {
+    const resp = await realtimeClient.reAuthenticate()
+    console.log('reauth resp: ', resp)
+    user.value = resp.user
+    accessToken.value = resp.accessToken
+  } catch(err){
+    console.warn('user not logged in')
+  }
+})
 </script>
 
 <template>
