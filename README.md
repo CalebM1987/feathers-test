@@ -45,12 +45,15 @@ npm run dev
 This app was created to demonstrate an issue with [feathersjs (dove)]() where the oauth callbacks are not working through SSL (the redirect is going to http://localhost:3030/oauth/callback instead of https://localhost:3030/oauth/callback).
 
 Socials or local auth page:
+
 ![socials login](./resources/login.png)
 
 Current user page:
+
 ![socials login](./resources/user.png)
 
 Show the access token:
+
 ![socials login](./resources/accessToken.png)
 
 # Vue 3 + TypeScript + Vite
