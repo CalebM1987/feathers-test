@@ -1,24 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-// import { realtimeClient } from '@/api'
-import { restClient, realtimeClient, apiBase } from '@/api'
+import { login, apiBase } from '@/api'
 import { providers } from '@/types'
-import { user, accessToken } from '@/store'
 import SocialLogin from '@/components/SocialLogin.vue';
 
 const email = ref('devtest@dev.com')
 const password = ref('devtest')
-
-const login = async ()=> {
-  const resp = await realtimeClient.authenticate({
-    strategy: 'local',
-    email: email.value,
-    password: password.value
-  })
-  console.log('resp??', resp)
-  user.value = resp.user
-  accessToken.value = resp.accessToken
-}
 
 const reset = ()=> {
   email.value = ''
@@ -43,7 +30,7 @@ const reset = ()=> {
     </div>
 
     <q-form
-      @submit="login"
+      @submit="login({ email, password })"
       @reset="reset"
       class="q-gutter-md local-auth-form"
     >
@@ -67,7 +54,7 @@ const reset = ()=> {
         @keyup.enter="login"
       />
 
-      <q-btn color="primary" @click="login" type="submit">Sign In</q-btn>
+      <q-btn color="primary" @click="login({ email, password })" type="submit">Sign In</q-btn>
     </q-form>
   </div>
 

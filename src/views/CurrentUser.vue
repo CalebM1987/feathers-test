@@ -1,18 +1,11 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import { user, accessToken } from "@/store";
-import { realtimeClient } from "@/api";
+import { user, accessToken, scope } from "@/store";
+import { logout } from "@/api";
 
 const tokenIcon = ref<"lock" | "lock_open">("lock");
-
 const defaultAvatar = "https://cdn.quasar.dev/img/boy-avatar.png";
 
-const logout = async ()=> {
-  const resp = await realtimeClient.logout()
-  user.value = undefined
-  accessToken.value = undefined
-  console.log('user logged out', resp)
-}
 </script>
 
 <template>
@@ -42,7 +35,7 @@ const logout = async ()=> {
       </q-item>
       <hr />
       <q-card-section class="q-ma-md">
-        Welcome to the Feathers test app
+        Welcome to the Feathers test app. You have authenticated with the <strong>{{ scope }}</strong> strategy.
       </q-card-section>
 
       <q-card-section>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { realtimeClient } from '@/api';
-import { user, accessToken } from '@/store';
+import { realtimeClient, handleAuthResponse } from '@/api';
+import { user } from '@/store';
 import Login from '@/views/Login.vue';
 import CurrentUser from '@/views/CurrentUser.vue';
 
@@ -14,8 +14,7 @@ onMounted(async ()=> {
   try {
     const resp = await realtimeClient.reAuthenticate()
     console.log('reauth resp: ', resp)
-    user.value = resp.user
-    accessToken.value = resp.accessToken
+    handleAuthResponse(resp)
   } catch(err){
     console.warn('user not logged in')
   }

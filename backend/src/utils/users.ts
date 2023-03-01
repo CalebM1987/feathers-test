@@ -2,9 +2,9 @@ import { type HookContext } from "@feathersjs/feathers";
 import { logger } from "../logger";
 
 export async function checkIfEmailExists(context: HookContext){
-  const { data: { email, password, googleId, facebookId }, service } = context
-  const isOauth = Boolean(googleId || facebookId)
-  if (!email){// || isOauth ? true: !password){
+  const { data: { email, password, googleId, facebookId, githubId }, service } = context
+  const isOauth = Boolean(googleId || facebookId || githubId)
+  if (!email){
     throw new Error('missing email or password')
   }
 
@@ -16,7 +16,7 @@ export async function checkIfEmailExists(context: HookContext){
     }
   })
   
-  if (total){
+  if (total && !isOauth){
     logger.info(`found duplicate email address: "${email}"`)
     throw new Error(`Email already exists: "${email}"`)
   }
