@@ -44,7 +44,7 @@ const defaultAvatar = "https://cdn.quasar.dev/img/boy-avatar.png";
             expand-separator
             :icon="tokenIcon"
             label="Access Token"
-            @after-show="() => (tokenIcon = 'lock_open')"
+            @before-show="() => (tokenIcon = 'lock_open')"
             @after-hide="() => (tokenIcon = 'lock')"
           >
             <q-card>
