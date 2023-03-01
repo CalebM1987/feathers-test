@@ -1,0 +1,25 @@
+{
+  "port": {
+    "__name": "PORT",
+    "__format": "number"
+  },
+  "host": "HOSTNAME",
+  "mongodb": "MONGODB",
+  "authentication": {
+    "secret": "FEATHERS_SECRET",
+    "oauth": {
+      "google": {
+        "key": "GOOGLE_KEY",
+        "secret": "GOOGLE_SECRET"
+      },
+      "facebook": {
+        "key": "FACEBOOK_KEY",
+        "secret": "FACEBOOK_SECRET"
+      },
+      "github": {
+        "key": "GITHUB_KEY",
+        "secret": "GITHUB_SECRET"
+      }
+    }
+  }
+}
