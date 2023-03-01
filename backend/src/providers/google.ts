@@ -13,7 +13,7 @@ export class GoogleStrategy extends OAuthStrategy {
     // this will grab the picture and email address of the Google profile
     return {
       ...baseData,
-      // profilePicture: profile.picture,
+      profilePicture: profile.picture,
       email: profile.email
     };
   }
