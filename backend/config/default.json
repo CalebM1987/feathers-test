@@ -35,6 +35,9 @@
       "passwordField": "password"
     },
     "oauth": {
+      "defaults": {
+        "origin": "https://localhost:3030"
+      },
       "google": {
         "key": "",
         "secret": "",
