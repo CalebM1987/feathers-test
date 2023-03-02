@@ -40,9 +40,7 @@ npm install https://localhost:3030/backend-0.0.0.tgz
 npm run dev
 ```
 
-## purpose
-
-This app was created to demonstrate an issue with [feathersjs (dove)](https://feathersjs.com/) where the oauth callbacks are not working through SSL (the redirect is going to http://localhost:3030/oauth/callback instead of https://localhost:3030/oauth/callback).
+## Screenshots
 
 Socials or local auth page:
 
